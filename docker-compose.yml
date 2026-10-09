@@ -10,9 +10,11 @@ services:
     build: ./backend
     ports:
       - "127.0.0.1:5000:5000"
+    env_file:
+      - ./backend/.env
     environment:
       PORT: 5000
-      MONGO_URI: "mongodb+srv://vpk4654_db_user:FKY6uXQ53F5TaUKt@todocluster.zb5eyjr.mongodb.net/MyDairy?appName=TodoCluster"
+      # MONGO_URI: ${MONGODB_URI}
       UPLOAD_DIR: /app/uploads
       REDIS_URL: ${REDIS_URL:-redis://redis:6379}
       JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in the environment or root .env file}
